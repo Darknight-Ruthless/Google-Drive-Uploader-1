@@ -1,5 +1,6 @@
 import os
 import subprocess
+import wget
 
 def wget_dl(url):
         try:
@@ -8,8 +9,8 @@ def wget_dl(url):
             #  i will fix it later :(
 
             filename = os.path.basename(url)
-            output = subprocess.check_output("wget '--output-document' '{}' '{}' ".format(filename , url), stderr=subprocess.STDOUT, shell=True)
-            
+            output = wget.download(url)
+
             print("Downloading Complete",filename)
             return filename
         except Exception as e:
